@@ -1,2 +1,2 @@
-##LICENCE
-MIT LICENCE[LICENCE]
+## License
+[MIT License](LICENSE)
