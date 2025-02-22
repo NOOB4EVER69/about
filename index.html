@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Sign In</h1>
+    </header>
+    <main>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign In</button>
+        </form>
+    </main>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        const button = document.querySelector("button");
+        let isValid = false;
+        let originalPosition = { left: button.style.left, top: button.style.top };
+
+        form.addEventListener("input", function() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            isValid = username === "imshorty@short.com" && password === "pas12@";
+            
+            if (isValid) {
+                button.style.position = "relative";
+                button.style.left = originalPosition.left;
+                button.style.top = originalPosition.top;
+            }
+        });
+
+        button.addEventListener("mouseover", function() {
+            if (!isValid) {
+                button.style.position = "absolute";
+                button.style.left = Math.random() * window.innerWidth * 0.8 + "px";
+                button.style.top = Math.random() * window.innerHeight * 0.8 + "px";
+            }
+        });
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (isValid) {
+                alert("Login successful!");
+                window.location.href = "home.html";
+            } else {
+                alert("Invalid credentials. Try again.");
+            }
+        });
+    });
+</script>
+
+
+</html>
